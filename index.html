@@ -13,12 +13,17 @@
        figures/portrait.jpg          (your photo, used in the hero)
        figures/dike-outcrop.jpg      (dissertation fieldwork — dikes, Soorpagla)
        figures/stress-diagram.jpg    (stress inversion / structural interpretation)
-       figures/gsi-training.jpg      (GSI Kolkata internship)
+       figures/internship_1.jpg      (GSI Kolkata internship — landscape, 16:9)
+       figures/internship_2.jpg      (GSI Kolkata internship — portrait, 3:4)
+       figures/internship_3.jpg      (GSI Kolkata internship — portrait, 3:4)
+       figures/internship_4.jpg      (GSI Kolkata internship — portrait, 3:4)
        figures/aravalli-mapping.jpg  (field assistant work, Aravalli Delhi Mobile Belt)
        figures/hostel-sports.jpg     (extracurricular / sports)
   3. That's it — refresh the page. Any slot without a matching file will keep
      showing a placeholder, so you can add images gradually. Filenames and
      folder are case-sensitive; JPG/PNG/WebP all work.
+     Note: internship_1 sits as a 16:9 hero next to a short geology note;
+     internship_2 to internship_4 sit below it as 3:4 portrait photos.
 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -316,27 +321,89 @@
   .entry ul{margin:12px 0 0; padding-left:18px; color:var(--ink-soft); font-size:0.92rem;}
   .entry li{margin-bottom:6px;}
   .entry__super{font-family:var(--font-mono); font-size:0.78rem; color:var(--malachite); margin-top:8px;}
-.entry__figures {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 16px;
-  width: 100%;
-}
 
-.entry__figures .figure {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  min-width: 0;
-  min-height: 0;
-}
+  .entry__figures {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+    width: 100%;
+  }
 
-.entry__figures .figure img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
+  .entry__figures .figure {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .entry__figures .figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Internship section: 16:9 hero photo with a geology note beside it,
+     and three 3:4 portrait photos in a row underneath. */
+  .internship-layout{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:20px;
+    margin-top:16px;
+  }
+  .internship-layout .figure{
+    aspect-ratio:16 / 9;
+    width:100%;
+  }
+  .internship-note{
+    background:var(--limestone-2);
+    border-left:3px solid var(--hematite);
+    padding:18px 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .internship-note__eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--hematite);
+    margin-bottom:8px;
+  }
+  .internship-note h4{
+    font-family:var(--font-display);
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--ink);
+    margin:0 0 8px;
+  }
+  .internship-note p{
+    margin:0;
+    font-size:0.87rem;
+    color:var(--ink-soft);
+    line-height:1.65;
+  }
+  .internship-portraits{
+    grid-column:1 / -1;
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:14px;
+  }
+  .internship-portraits .figure{
+    aspect-ratio:3 / 4;
+  }
+  .internship-layout .figure img,
+  .internship-portraits .figure img{
+    object-fit:cover;
+    object-position:center;
+  }
+  @media (max-width: 700px){
+    .internship-layout{grid-template-columns:1fr;}
+    .internship-portraits{grid-template-columns:repeat(2, minmax(0, 1fr));}
+  }
+
   /* skills */
   .skills-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:28px;}
   .skill-cat h3{font-size:0.95rem; text-transform:uppercase; letter-spacing:0.05em; font-family:var(--font-mono); font-weight:500; color:var(--slate); margin-bottom:12px;}
@@ -647,12 +714,40 @@
           </ul>
           <div class="entry__super">Supervisors: Pritam Talukdar (Geologist), Pratap Kumar Mohanty (Asst. Geologist)</div>
         </div>
-        <div class="entry__figures">
+        <div class="internship-layout">
           <div class="figure figure--empty">
-            <img src="figures/gsi-training.jpg" alt="GSI Kolkata training" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
+            <img src="figures/internship_1.jpg" alt="GSI Kolkata training, photo 1" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
             <div class="figure__placeholder">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="9" height="7" rx="1"/><path d="M3 9h18"/></svg>
-              gsi-training.jpg
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="9" height="7" rx="1"/><path d="M3 9h18"/></svg>
+              internship_1.jpg
+            </div>
+          </div>
+          <div class="internship-note">
+            <div class="internship-note__eyebrow">Field site notes</div>
+            <h4>Belpahari Hills, Jhargram District, West Bengal</h4>
+            <p>Forested southwest of Jhargram district, near the Odisha and Jharkhand borders, within the broader Chhotanagpur–Singhbhum crystalline belt of the Eastern Indian Shield. Identified pyrite crystals — evidence of sulphide mineralisation in the local basement rocks.</p>
+          </div>
+          <div class="internship-portraits">
+            <div class="figure figure--empty">
+              <img src="figures/internship_2.jpg" alt="GSI Kolkata training, photo 2" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
+              <div class="figure__placeholder">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="9" height="7" rx="1"/><path d="M3 9h18"/></svg>
+                internship_2.jpg
+              </div>
+            </div>
+            <div class="figure figure--empty">
+              <img src="figures/internship_3.jpg" alt="GSI Kolkata training, photo 3" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
+              <div class="figure__placeholder">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="9" height="7" rx="1"/><path d="M3 9h18"/></svg>
+                internship_3.jpg
+              </div>
+            </div>
+            <div class="figure figure--empty">
+              <img src="figures/internship_4.jpg" alt="GSI Kolkata training, photo 4" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
+              <div class="figure__placeholder">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="9" height="7" rx="1"/><path d="M3 9h18"/></svg>
+                internship_4.jpg
+              </div>
             </div>
           </div>
         </div>
