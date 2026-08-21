@@ -26,6 +26,8 @@
      folder are case-sensitive; JPG/PNG/WebP all work.
      Note: internship_1 sits as a 16:9 hero next to a short geology note;
      internship_2 to internship_4 sit below it as 3:4 portrait photos.
+     field_1 sits as a 16:9 photo with field_2 and field_3 (3:4 portrait)
+     beside it — all three matched to the same row height.
 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -406,6 +408,41 @@
     .internship-portraits{grid-template-columns:repeat(2, minmax(0, 1fr));}
   }
 
+  /* Field Assistant section: one 16:9 photo and two 3:4 portrait photos,
+     all placed in a single row and matched to the same row height.
+     Each photo's own aspect-ratio decides its width — the row height
+     is fixed once, on the container, not on the individual photos. */
+  .field-layout{
+    display:flex;
+    gap:14px;
+    margin-top:16px;
+    height:300px;
+  }
+  .field-layout .figure{
+    height:100%;
+    flex-shrink:0;
+  }
+  .field-layout .figure--wide{
+    aspect-ratio:16 / 9;
+  }
+  .field-layout .figure--tall{
+    aspect-ratio:3 / 4;
+  }
+  .field-layout .figure img{
+    object-fit:cover;
+    object-position:center;
+  }
+  @media (max-width: 700px){
+    .field-layout{
+      flex-direction:column;
+      height:auto;
+    }
+    .field-layout .figure{
+      height:auto;
+      width:100%;
+    }
+  }
+
   /* skills */
   .skills-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:28px;}
   .skill-cat h3{font-size:0.95rem; text-transform:uppercase; letter-spacing:0.05em; font-family:var(--font-mono); font-weight:500; color:var(--slate); margin-bottom:12px;}
@@ -769,26 +806,30 @@
           </ul>
           <div class="entry__super">Supervisor: Dr. Soumyajit Mukherjee</div>
         </div>
-        <div class="entry__figures">
-          <div class="figure figure--empty">
+        <div class="field-layout">
+          <div class="figure figure--empty figure--wide">
             <img src="figures/field_1.JPG" alt="Group picture, photo 1" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
             <div class="figure__placeholder">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20l6-14 4 8 3-5 3 11z"/></svg>
               field_1.JPG
             </div>
           </div>
-          <div class="figure figure--empty">
+          <div class="figure figure--empty figure--tall">
             <img src="figures/field_2.JPG" alt="field work, photo 2" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
             <div class="figure__placeholder">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20l6-14 4 8 3-5 3 11z"/></svg>
-              field_2.JPG        
+              field_2.JPG
             </div>
-         </div>
-          <div class="figure figure--empty">
+          </div>
+          <div class="figure figure--empty figure--tall">
             <img src="figures/field_3.JPG" alt="field work, photo 3" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
             <div class="figure__placeholder">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20l6-14 4 8 3-5 3 11z"/></svg>
               field_3.JPG
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ===================== SKILLS ===================== -->
