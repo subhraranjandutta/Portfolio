@@ -348,6 +348,89 @@
     display: block;
   }
 
+  /* Dissertation section: match the Internship Trainee layout exactly. */
+  .dissertation-layout{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:20px;
+    margin-top:16px;
+  }
+  .dissertation-layout .figure{
+    aspect-ratio:16 / 9;
+    width:100%;
+  }
+  .dissertation-note{
+    background:var(--limestone-2);
+    border-left:3px solid var(--hematite);
+    padding:18px 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .dissertation-note__eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--hematite);
+    margin-bottom:8px;
+  }
+  .dissertation-note h4{
+    font-family:var(--font-display);
+    font-size:1.05rem;
+    font-weight:600;
+    color:var(--ink);
+    margin:0 0 8px;
+  }
+  .dissertation-note p{
+    margin:0;
+    font-size:0.87rem;
+    color:var(--ink-soft);
+    line-height:1.65;
+  }
+  .dissertation-portraits{
+    grid-column:1 / -1;
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:14px;
+  }
+  .dissertation-portraits .figure{
+    aspect-ratio:3 / 4;
+  }
+  .dissertation-layout .figure img,
+  .dissertation-portraits .figure img,
+  .dissertation-final .figure img{
+    object-fit:cover;
+    object-position:center;
+  }
+  .dissertation-final{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:20px;
+    margin-top:20px;
+    align-items:stretch;
+  }
+  .dissertation-final .figure{
+    aspect-ratio:16 / 9;
+    width:100%;
+    grid-column:2;
+    grid-row:1;
+  }
+  .dissertation-final .dissertation-note{
+    grid-column:1;
+    grid-row:1;
+  }
+  @media (max-width: 700px){
+    .dissertation-layout{grid-template-columns:1fr;}
+    .dissertation-portraits{grid-template-columns:repeat(2, minmax(0, 1fr));}
+    .dissertation-final{grid-template-columns:1fr;}
+    .dissertation-final .figure,
+    .dissertation-final .dissertation-note{
+      grid-column:1;
+      grid-row:auto;
+    }
+  }
+
   /* Internship section: 16:9 hero photo with a geology note beside it,
      and three 3:4 portrait photos in a row underneath. */
   .internship-layout{
@@ -712,27 +795,65 @@
         <div class="entry__body">
           <div class="entry__top">
             <div>
-              <h3>Dissertation — M.Sc., Department of Earth Sciences</h3>
+              <h3>Dissertation — M.Sc., Department of Earth Sciences, IIT Bombay</h3>
               <div class="entry__org">Palaeostress analysis and interpretation from dikes of the Soorpagla region, South Delhi Terrane, NW India</div>
             </div>
             <div class="entry__years">2023 — 2024</div>
           </div>
-          <p style="margin:10px 0 0; color:var(--ink-soft); font-size:0.92rem;">This study contributes to understanding the tectonic history and deformation mechanisms specific to the area, reconstructing prior stress states and interpreting the associated movement and deformation processes. It involved stress inversion, structural interpretation, and integration of field and remote-sensing datasets, with relevance to crustal deformation studies on planetary bodies.</p>
-          <div class="entry__super">Supervisor: Dr. Soumyajit Mukherjee</div>
+          <div class="entry__super">Supervisor: Dr. Soumyajit Mukherjee (Professor, IIT Bombay)</div>
         </div>
-        <div class="entry__figures">
+
+        <div class="dissertation-layout">
           <div class="figure figure--empty">
-            <img src="figures/dike-outcrop.jpg" alt="Dike outcrop, Soorpagla region" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
+            <img src="figures/dissertation_1.jpg" alt="Mafic dikes exposed near Soorpagla village" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
             <div class="figure__placeholder">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 18l5-9 4 6 3-4 6 7z"/></svg>
-              dike-outcrop.jpg
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20l6-14 4 8 3-5 3 11z"/></svg>
+              dissertation_1.jpg
             </div>
           </div>
+
+          <div class="dissertation-note">
+            <div class="dissertation-note__eyebrow">Dissertation fieldwork</div>
+            <h4>Mafic dikes near Soorpagla village</h4>
+            <p><strong>Mafic dikes exposed near Surpagla village represent a previously unstudied palaeostress history.</strong> <strong>Through field mapping, attitude measurements, and GPS tracing on Google Earth Pro, I compiled a dataset of eleven dikes striking dominantly NE-SW</strong>. Firsthand documentation of outcrops recorded strike, dip, dip direction, and precise coordinates, while photographed features like chilled margins, cooling joints, and faulting constrained their relative timing and emplacement mechanisms.</p>
+          </div>
+
+          <div class="dissertation-portraits">
+            <div class="figure figure--empty">
+              <img src="figures/dissertaion_2.jpg" alt="Dissertation supporting figure" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
+              <div class="figure__placeholder">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="9" height="7" rx="1"/><path d="M3 9h18"/></svg>
+                dissertaion_2.jpg
+              </div>
+            </div>
+            <div class="figure figure--empty">
+              <img src="figures/stress-elipsoid.jpg" alt="Stress ellipsoid" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
+              <div class="figure__placeholder">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="9" height="7" rx="1"/><path d="M3 9h18"/></svg>
+                stress-elipsoid.jpg
+              </div>
+            </div>
+            <div class="figure figure--empty">
+              <img src="figures/dissertation_3.jpg" alt="Dissertation supporting figure" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
+              <div class="figure__placeholder">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="9" height="7" rx="1"/><path d="M3 9h18"/></svg>
+                dissertaion_3.jpg
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dissertation-final">
+          <div class="dissertation-note">
+            <div class="dissertation-note__eyebrow">Structural interpretation</div>
+            <p>Adopting the Andersonian assumption of a vertical σ1 given the steep dip of the dikes, stress ellipsoid is derived. This result was cross-checked against an independent dike-normal construction and found consistent. Correlating these findings with prior geochronological work, I link the dike emplacement to an event around 806 million years ago, contributing new structural constraints on the tectonic and magmatic evolution of the Surpagla region.</p>
+          </div>
+
           <div class="figure figure--empty">
-            <img src="figures/stress-diagram.jpg" alt="Stress inversion diagram" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
+            <img src="figures/dike-mapping.jpg" alt="Dike mapping" onerror="this.parentElement.classList.add('figure--empty')" onload="this.parentElement.classList.remove('figure--empty')">
             <div class="figure__placeholder">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v20M2 12h20M6 6l12 12M18 6L6 18"/></svg>
-              stress-diagram.jpg
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20l6-14 4 8 3-5 3 11z"/></svg>
+              dike-mapping.jpg
             </div>
           </div>
         </div>
